@@ -1,0 +1,11 @@
+<div class="product-list__div--container">
+    <ul class="product-list__ul">
+        <ng-container *ngFor="let product of products">
+            <li *ngIf="product.categoryName === categorySelected || categorySelected === 'All' " class="product__li"
+                (click)="productClicked(product)">
+                <app-product [product]="product">
+                </app-product>
+            </li>
+        </ng-container>
+    </ul>
+</div>

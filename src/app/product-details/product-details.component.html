@@ -1,0 +1,13 @@
+<div class="main__div">
+    <div class="product__img--container">
+        <img src={{product.img}} class="product__img" />
+        <div class="footer_div">
+            <div>Name: {{product.title}}</div>
+            <div>Description: {{product.description}}</div>
+            <div>Price: {{product.price}}</div>
+            <div>Category Id: {{product.categoryId}}</div>
+            <div>Category Name: {{product.categoryName}}</div>
+        </div>
+    </div>
+    <input class="footer__button--back" type="button" value="Back" (click)="backClicked()" />
+</div>

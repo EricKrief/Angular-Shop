@@ -1,0 +1,7 @@
+<div class="main__div">
+    <ul class="navigation_ul">
+        <li *ngFor="let display of productDisplayOptions"
+            [ngClass]="{'navigation__li':true ,'navigation__li--focus':display.selected}"
+            (click)="changeDisplay(display)">{{display.title}}</li>
+    </ul>
+</div>

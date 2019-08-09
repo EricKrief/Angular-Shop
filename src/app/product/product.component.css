@@ -1,0 +1,33 @@
+.product__img--container{
+    width:10em;
+    height: 10em;
+    border: 2px solid black;
+    padding:1em;
+    box-shadow: 0.2em 0.2em black;
+    background-color: lightblue;
+}
+
+.product__img--container:hover{
+    background-color: aquamarine;
+}
+
+.header__product{
+display: flex;
+justify-content: space-between;
+}
+
+.product__img{
+    width: 100%;
+    height: 70%;
+}
+
+.footer_product{
+    color: black;
+    background: white;
+    text-align: center;
+    margin-top: -0.5em;
+    margin-left: -0.9em;
+    background-color:white;
+    height: 30%;
+    width: 119%;
+}

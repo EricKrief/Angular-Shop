@@ -1,0 +1,12 @@
+<div class="main">
+    <ul *ngFor="let item of menuItems">
+        <app-menu-item [itemTitle]="item" (itemClick)="onPageChanged($event)"></app-menu-item>
+    </ul>
+    <ul class="footer_ul">
+        <li *ngFor="let url of socialMediaUrls; let i=index" class="footer__li">
+            <a href={{my_profiles[i]}} target="_blank">
+                <img class="footer__buttons" src={{url}} />
+            </a>
+        </li>
+    </ul>
+</div>
