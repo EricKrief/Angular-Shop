@@ -1,0 +1,17 @@
+<div class="main__div">
+    <ul>
+        <ng-container *ngFor="let item of menuItems">
+            <app-menu-item [itemTitle]="item" (itemClick)="onPageChanged($event)"></app-menu-item>
+        </ng-container>
+        <app-menu-item [itemTitle]="shoppingCartMenuItem" (itemClick)="onPageChanged($event)"></app-menu-item>
+    </ul>
+    <app-content-projection>
+        <ul class="footer__ul">
+            <li *ngFor="let url of socialMediaUrls; let i=index" class="footer__li">
+                <a href={{myProfiles[i]}} #social_links>
+                    <img class="footer__buttons" src={{url}} />
+                </a>
+            </li>
+        </ul>
+    </app-content-projection>
+</div>

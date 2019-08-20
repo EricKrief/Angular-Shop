@@ -1,0 +1,19 @@
+.nav__div--main{
+    z-index: 1;
+    background-color: darkblue;
+    height: 3em;
+    width: 100%;
+    position: fixed;
+}
+
+.nav__img{
+    height: 2em;
+    width: 2em;
+    padding: 0.5em;
+}
+
+.nav__img:hover{
+    height: 2.2em;
+    width: 2.2em;
+    cursor: pointer;
+}

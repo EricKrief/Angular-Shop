@@ -1,0 +1,19 @@
+.main__menu-item{
+    margin-left: -1.5em;
+    margin-top:2em;
+    font-weight: bold;
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0.5em 2em 0.5em 2em;
+    border: 2px solid darkblue;
+    box-shadow: 0.2em 0.2em darkblue;
+    width: 70%;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__menu-item:hover{
+    background-color: aqua;
+}

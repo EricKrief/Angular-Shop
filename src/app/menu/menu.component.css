@@ -1,0 +1,26 @@
+.main__div{
+    z-index: 1;
+    margin-top:3em;
+    position: fixed;
+    height: 100%;
+    width: 18%;
+    background-color: lightblue;
+}
+
+.footer__buttons{
+    width: 2em;
+    height: 2em;
+}
+
+.footer__ul{
+    margin-top: 19.5em;
+}
+
+.footer__li{
+    margin-left: 1.5em;
+    list-style-type: none;
+    display: inline;
+    cursor: pointer;
+}
+
+
