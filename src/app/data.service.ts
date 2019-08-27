@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/model/product';
 import { Category } from 'src/model/category';
 import { ProductDisplayOptions } from 'src/model/product-display-options';
-import { ProductComponent } from './product/product.component';
 
 @Injectable({
     providedIn: "root"

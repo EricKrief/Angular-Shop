@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { Product } from 'src/model/product';
 import { Category } from 'src/model/category';
 import { CartService } from './cart.service';
+import { LocalizationService } from './localization.service';
 
 @Component({
   selector: 'app-root',
@@ -40,8 +41,9 @@ export class AppComponent implements OnInit {
   shoppingCartMenuItemText = 'shopping cart (0)';
   homeText = "Welcome to the shop!"
   addedItems: Product[] = [];
+  currentLanguage: string = 'english';
 
-  constructor(private dataService: DataService, private cartService: CartService) { }
+  constructor(private dataService: DataService, private cartService: CartService, private localizationService: LocalizationService) { }
 
   ngOnInit() {
     this.categories = this.dataService.getCategories();
@@ -81,7 +83,7 @@ export class AppComponent implements OnInit {
 
     this.cartNumberOfItems++;
     this.addedItems.push(product);
-    this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+    this.shoppingCartMenuItemText = this.getShoppingCartText();
   }
 
   showNotifier(productName: string) {
@@ -108,12 +110,12 @@ export class AppComponent implements OnInit {
     }
     this.cartNumberOfItems -= product.quantity;
     this.addedItems.splice(index, 1);
-    this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+    this.shoppingCartMenuItemText = this.getShoppingCartText();
   }
 
   updateProductCount(newQuantity: number): void {
     this.cartNumberOfItems += newQuantity;
-    this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+    this.shoppingCartMenuItemText = this.getShoppingCartText();
   }
 
 
@@ -124,7 +126,7 @@ export class AppComponent implements OnInit {
     for (let i = 0; i < userProducts.length; i++) {
       this.cartNumberOfItems += userProducts[i].quantity;;
     }
-    this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+    this.shoppingCartMenuItemText = this.getShoppingCartText();
     this.dataService.lastClickedMenuItem('home');
     this.displayPage = 'home';
     this.homeText = 'Welcome ' + username + '!';
@@ -143,6 +145,20 @@ export class AppComponent implements OnInit {
 
   updated() {
     this.displayPage = 'products';
+  }
+
+  changeLanguage(language: string) {
+    this.currentLanguage = language;
+    this.shoppingCartMenuItemText = this.getShoppingCartText();
+  }
+
+  getShoppingCartText() {
+    if (this.currentLanguage === 'עברית') {
+      return ' (' + this.localizationService.getTranslatedWord('shopping cart', this.currentLanguage) + '(' + this.cartNumberOfItems;
+    }
+    else {
+      return this.localizationService.getTranslatedWord('shopping cart', this.currentLanguage) + '(' + this.cartNumberOfItems + ')';
+    }
   }
 
 }

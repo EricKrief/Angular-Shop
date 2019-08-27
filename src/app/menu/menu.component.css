@@ -14,13 +14,25 @@
 }
 
 .footer__ul{
-    margin-top: 19.5em;
+    margin-top: 17em;
 }
 
 .footer__li{
     margin-left: 1.5em;
     list-style-type: none;
     display: inline;
+    cursor: pointer;
+}
+
+.ul--languages{
+    display: flex;
+    justify-content: space-around;
+    margin-left: -2em;
+}
+
+.li--language{
+    font-weight: bold;
+    list-style-type: none;
     cursor: pointer;
 }
 

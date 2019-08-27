@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { PermissionService } from '../permission.service';
+import { LocalizationService } from '../localization.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +12,7 @@ export class MenuComponent implements OnInit {
 
   @Output() pageChanged = new EventEmitter<string>();
   @Output() logOut = new EventEmitter();
+  @Output() languageChanged = new EventEmitter<string>();
   @Input() shoppingCartMenuItem: string;
   @Input() loggedIn: boolean;
   selectedMenuItem: string;
@@ -18,10 +20,14 @@ export class MenuComponent implements OnInit {
   menuItems: string[];
   socialMediaUrls: string[];
   myProfiles: string[];
+  languages: string[];
+  currentLanguage: string = 'english';
 
 
-  constructor(private dataService: DataService, private permissionService: PermissionService) { }
+  constructor(private dataService: DataService, private permissionService: PermissionService, private localizationService: LocalizationService) { }
   ngOnInit() {
+    this.currentLanguage = this.localizationService.currentLanguage;
+    this.languages = this.localizationService.getLanguages();
     this.menuItems = this.dataService.getMenuItems();
     this.socialMediaUrls = this.dataService.getSocialMediaUrls();
     this.myProfiles = this.dataService.getProfileUrls();
@@ -47,7 +53,9 @@ export class MenuComponent implements OnInit {
       this.permissionService.loggedInUsername = undefined;
       return;
     }
-    if (requestedPage.substring(0, 13) === "shopping cart") {
+    if (requestedPage.substring(0, 13) === "shopping cart" ||
+      requestedPage.substring(2, 13) === 'עגלת מוצרים' ||
+      requestedPage.substring(0, 15) === 'carrito compras') {
       this.pageChanged.emit("shopping cart");
       this.selectedMenuItem = 'shopping cart';
       this.dataService.lastClickedMenuItem('shopping cart');
@@ -56,6 +64,12 @@ export class MenuComponent implements OnInit {
     this.selectedMenuItem = requestedPage;
     this.dataService.lastClickedMenuItem(requestedPage);
     this.pageChanged.emit(requestedPage);
+  }
+
+  changeLanguage(language: string) {
+    this.currentLanguage = language;
+    this.localizationService.currentLanguage = language;
+    this.languageChanged.emit(language);
   }
 
 }

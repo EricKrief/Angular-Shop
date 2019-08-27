@@ -9,10 +9,13 @@ export class MenuItemComponent implements OnInit {
 
   @Input() itemTitle: string;
   @Input() selected: boolean;
+  @Input() language: string;
+  @Input() shoppingCart: boolean;
   @Output() itemClick = new EventEmitter<string>();
 
   constructor() { }
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   itemClicked(item: string) {
     this.itemClick.emit(item);

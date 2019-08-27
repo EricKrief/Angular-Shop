@@ -1,6 +1,6 @@
 <app-nav-bar (toggleMenu)="toggleMenu()"></app-nav-bar>
 <app-menu *ngIf="showMenu" (pageChanged)="changePage($event)" [loggedIn]="showCart"
-    [shoppingCartMenuItem]="shoppingCartMenuItemText"></app-menu>
+    [shoppingCartMenuItem]="shoppingCartMenuItemText" (languageChanged)="changeLanguage($event)"></app-menu>
 <app-header></app-header>
 <app-notifier @notifier *ngIf="notifier" [productName]="productName"></app-notifier>
 <app-home @state *ngIf="displayPage === 'home'" [title]="homeText"></app-home>
