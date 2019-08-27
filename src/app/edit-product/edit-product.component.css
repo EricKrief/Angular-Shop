@@ -9,12 +9,13 @@
     border: 3px solid black;
     box-shadow: 1px 1px 1px 1px;
     width: 60%;
+    margin-top: 5em;
+    margin-bottom: 5em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column;
     background-color: bisque;
-    margin-bottom: 5em;
 }
 
 .div--input-container{
@@ -28,7 +29,7 @@
 
 .form__input{
     margin-left: 1em;
-    width:30em;
+    width:15em;
     height: 2em;
     border: 1px solid black;
     border-radius:0.5em; 
@@ -36,27 +37,27 @@
     padding-left: 1em;
 }
 
-.text-area__message{
-    margin-top: 4em;
+.text-area--description{
     margin-bottom: 2em;
-    height: 8em;
-    width: 32em;
+    width: 15em;
+    height: 4em;
     border:1px solid black;
 }
 
-.button--send{
+.button--update{
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 2em;
+    margin-top: 2em;
     background-color: brown;
 }
 
-.button--send:hover:enabled{
+.button--update:hover:enabled{
     background-color: crimson;
     cursor: pointer;
 }
 
-input.ng-invalid.ng-touched{
+input.ng-invalid.ng-dirty{
     border: 1px solid red;
 }
 
@@ -64,6 +65,7 @@ input.ng-invalid.ng-touched{
     color: #D8000C;
     background-color:#FFBABA;
     margin-top: -1em;
+    margin-left: 35%;
     padding: 1em;
 }
 

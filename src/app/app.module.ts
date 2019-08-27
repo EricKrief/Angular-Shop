@@ -17,8 +17,11 @@ import { CategoryNavigationComponent } from './category-navigation/category-navi
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ContentProjectionComponent } from './content-projection/content-projection.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import {FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierComponent } from './notifier/notifier.component';
+import { LoginComponent } from './login/login.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +41,15 @@ import { NotifierComponent } from './notifier/notifier.component';
     ContentProjectionComponent,
     ShoppingCartComponent,
     NotifierComponent,
+    LoginComponent,
+    AddProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

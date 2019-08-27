@@ -31,11 +31,11 @@
     width: 10em;
 }
 
-.o{
+.products__ul{
     list-style-type: none;
 }
 
-.l{
+.input--quantity{
     margin-top: 2em;
     width: 3em;
 }
@@ -62,7 +62,7 @@
 }
 
 .product__button--remove-item:hover{
-    background-color: chartreuse;
+    background-color: crimson;
 }
 
 .cart__button--checkout{
@@ -73,5 +73,5 @@
 }
 
 .cart__button--checkout:hover{
-    background-color: chartreuse;
+    background-color: crimson;
 }

@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class MenuItemComponent implements OnInit {
 
   @Input() itemTitle: string;
+  @Input() selected: boolean;
   @Output() itemClick = new EventEmitter<string>();
 
   constructor() { }

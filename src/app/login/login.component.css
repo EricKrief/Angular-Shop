@@ -15,6 +15,7 @@
     flex-flow: column;
     background-color: bisque;
     margin-bottom: 5em;
+    margin-top: 5em;
 }
 
 .div--input-container{
@@ -44,14 +45,15 @@
     border:1px solid black;
 }
 
-.button--send{
+.button--login{
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 2em;
+    margin-top: 2em;
     background-color: brown;
 }
 
-.button--send:hover:enabled{
+.button--login:hover:enabled{
     background-color: crimson;
     cursor: pointer;
 }

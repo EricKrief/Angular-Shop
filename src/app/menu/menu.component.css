@@ -5,6 +5,7 @@
     height: 100%;
     width: 18%;
     background-color: lightblue;
+    border:1px solid black;
 }
 
 .footer__buttons{

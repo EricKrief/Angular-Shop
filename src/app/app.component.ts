@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { DataService } from './data.service';
-import { CartService } from './cart.service';
 import { Product } from 'src/model/product';
 import { Category } from 'src/model/category';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ import { Category } from 'src/model/category';
     ]),
     trigger('notifier', [
       transition(':leave', [
-        animate('1000ms ease-in', style({ opacity:'0'}))
+        animate('1000ms ease-in', style({ opacity: '0' }))
       ])
     ])
   ]
@@ -28,15 +28,18 @@ export class AppComponent implements OnInit {
 
 
   notifier = false;
+  username: string;
   productName: string;
   categories: Category[];
   products: Product[];
   displayPage = "home";
   product: Product;
+  showCart = false;
   showMenu = false;
-  cartNumberOfItems = 0;
+  cartNumberOfItems: number = 0;
   shoppingCartMenuItemText = 'shopping cart (0)';
-  addedItems: string[] = [];
+  homeText = "Welcome to the shop!"
+  addedItems: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) { }
 
@@ -60,6 +63,13 @@ export class AppComponent implements OnInit {
   }
 
   changePage(requestedPage: string): void {
+    if (requestedPage === 'logout') {
+      this.homeText = 'Welcome to the shop!';
+      this.showCart = false;
+      this.showMenu = false
+      this.displayPage = 'home';
+      return;
+    }
     this.displayPage = requestedPage;
   }
 
@@ -70,7 +80,7 @@ export class AppComponent implements OnInit {
     }
 
     this.cartNumberOfItems++;
-    this.addedItems.push(product.title);
+    this.addedItems.push(product);
     this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
   }
 
@@ -82,7 +92,7 @@ export class AppComponent implements OnInit {
 
   productAlreadyInCart(product: Product): boolean {
     for (let i = 0; i < this.addedItems.length; i++) {
-      if (product.title === this.addedItems[i]) {
+      if (product.title === this.addedItems[i].title) {
         return true;
       }
     }
@@ -92,7 +102,7 @@ export class AppComponent implements OnInit {
   removeProduct(product: Product): void {
     let index: number;
     for (let i = 0; i < this.addedItems.length; i++) {
-      if (product.title === this.addedItems[i]) {
+      if (product.title === this.addedItems[i].title) {
         index = i;
       }
     }
@@ -104,6 +114,35 @@ export class AppComponent implements OnInit {
   updateProductCount(newQuantity: number): void {
     this.cartNumberOfItems += newQuantity;
     this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+  }
+
+
+  login(username: string) {
+    let userProducts: Product[] = this.cartService.getProducts(username);
+    this.addedItems = [...this.cartService.getProducts(username)];
+    this.cartNumberOfItems = 0;
+    for (let i = 0; i < userProducts.length; i++) {
+      this.cartNumberOfItems += userProducts[i].quantity;;
+    }
+    this.shoppingCartMenuItemText = 'shopping cart (' + this.cartNumberOfItems + ')';
+    this.dataService.lastClickedMenuItem('home');
+    this.displayPage = 'home';
+    this.homeText = 'Welcome ' + username + '!';
+    this.username = username;
+    this.showCart = true;
+    this.showMenu = false;
+    if (username === 'admin') {
+      this.dataService.addProductMenuItem();
+    }
+  }
+
+  editProduct(product: Product) {
+    this.product = product;
+    this.displayPage = 'edit product';
+  }
+
+  updated() {
+    this.displayPage = 'products';
   }
 
 }

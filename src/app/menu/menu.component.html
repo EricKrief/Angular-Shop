@@ -1,9 +1,13 @@
 <div class="main__div">
     <ul>
         <ng-container *ngFor="let item of menuItems">
-            <app-menu-item [itemTitle]="item" (itemClick)="onPageChanged($event)"></app-menu-item>
+            <app-menu-item [itemTitle]="item" [selected]="item === selectedMenuItem"
+                (itemClick)="onPageChanged($event)"></app-menu-item>
         </ng-container>
-        <app-menu-item [itemTitle]="shoppingCartMenuItem" (itemClick)="onPageChanged($event)"></app-menu-item>
+        <app-menu-item [itemTitle]="logInOut" [selected]="selectedMenuItem === 'login' || selectedMenuItem === 'logout'"
+            (itemClick)="onPageChanged($event)"></app-menu-item>
+        <app-menu-item *ngIf="loggedIn" [itemTitle]="shoppingCartMenuItem"
+            [selected]="selectedMenuItem === 'shopping cart'" (itemClick)="onPageChanged($event)"></app-menu-item>
     </ul>
     <app-content-projection>
         <ul class="footer__ul">

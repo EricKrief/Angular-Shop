@@ -1,0 +1,43 @@
+<div class="main__div--container">
+    <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()" class="main__form">
+        <div class="div--input-container">
+            <h2>Title</h2>
+            <input type="text" class="form__input" formControlName="title" />
+        </div>
+        <span class="span--invalid" *ngIf="!editProductForm.get('title').valid">Please enter
+            product title</span>
+        <div class="div--input-container">
+            <h2>Image url</h2>
+            <input type="text" class="form__input" formControlName="image" />
+        </div>
+        <span class="span--invalid"
+            *ngIf="!editProductForm.get('image').valid && editProductForm.get('image').dirty">Please enter
+            image url</span>
+        <div class="div--input-container">
+            <h2>Price ($)</h2>
+            <input type="number" class="form__input" formControlName="price" min="0.1" />
+        </div>
+        <span class="span--invalid"
+            *ngIf="!editProductForm.get('price').valid && editProductForm.get('price').dirty">Please enter
+            price</span>
+        <div class="div--input-container">
+            <h2>Category</h2>
+            <select class="form__input" formControlName="category">
+                <option value="Fruit">Fruit</option>
+                <option value="Vegetable">Vegetable</option>
+            </select>
+        </div>
+        <span class="span--invalid"
+            *ngIf="!editProductForm.get('category').valid && editProductForm.get('category').dirty">Please enter
+            product category</span>
+        <div class="div--input-container">
+            <h2>Description</h2>
+            <textarea type="text" class="text-area--description" formControlName="description"
+                value="{{product.description}}"></textarea>
+        </div>
+        <input class="button--update" type="submit" value="update product" [disabled]="!editProductForm.get('image').valid || 
+            !editProductForm.get('price').valid || 
+            !editProductForm.get('category').valid || 
+            !editProductForm.get('title').valid" />
+    </form>
+</div>

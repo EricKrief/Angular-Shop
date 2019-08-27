@@ -4,7 +4,9 @@
             <li *ngIf="product.categoryName === categorySelected || categorySelected === 'All' " class="product__li">
                 <app-product [product]="product" (click)="productClicked(product)">
                 </app-product>
-                <input type="button" value="Add to cart" class="product__button--add" (click)="addProduct(product)" />
+                <input type="button" value="Add to cart" [disabled]="loggedInUsername === undefined"
+                    class="product__button--add" (click)="addProduct(product)" />
+                <input *ngIf="loggedInUsername === 'admin'" (click)="editClicked(product)" type="button" class="product__button--edit" value="edit" />
             </li>
         </ng-container>
     </ul>

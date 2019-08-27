@@ -2,5 +2,5 @@
     <span class="products__span--title">{{title}}</span>
     <app-category-navigation (changeProductDisplay)="changeProductDisplay($event)"></app-category-navigation>
 </div>
-<app-product-list (addToCart)="addToCart($event)" [products]="products" [categorySelected]="categorySelected"
+<app-product-list (addToCart)="addToCart($event)" (editProduct)="editProduct($event)" [products]="products" [categorySelected]="categorySelected"
     (showProductDetails)="productClicked($event)"></app-product-list>

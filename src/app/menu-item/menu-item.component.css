@@ -15,5 +15,16 @@
 }
 
 .main__menu-item:hover{
-    background-color: aqua;
+    background-color: deepskyblue;
+}
+
+.item__li--selected{
+    color: white;
+    background-color: darkblue;
+    box-shadow: 0.2em 0.2em  blue;
+    border: 2px solid blue;
+}
+
+.item__li--selected:hover{
+    background-color: deepskyblue;
 }

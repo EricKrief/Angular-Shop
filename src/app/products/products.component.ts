@@ -11,6 +11,7 @@ export class ProductsComponent implements OnInit {
   @Input() products: Product[];
   @Output() showProductDetails = new EventEmitter<Product>();
   @Output() addItem = new EventEmitter<Product>();
+  @Output() edit = new EventEmitter<Product>();
   title = "Buy our products!";
   categorySelected: string;
 
@@ -29,6 +30,10 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product) {
     this.addItem.emit(product);
+  }
+
+  editProduct(product: Product) {
+    this.edit.emit(product);
   }
 
 }

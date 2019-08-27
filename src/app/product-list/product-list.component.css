@@ -28,14 +28,29 @@
 }
 
 .product__button--add{
-    background-color: crimson;
-    width: auto;
-    cursor: pointer;
+    background-color: darkslateblue;
+    color: white;
     font-weight: bold;
     margin-top: 0.2em;
     font-size: 1.5em;
 }
 
-.product__button--add:hover{
-    background-color: chartreuse;
+.product__button--add:hover:enabled{
+    background-color: darkblue;
+    color: black;
+    cursor: pointer;
+}
+
+.product__button--edit{
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 0.2em;
+    font-size: 1.2em;
+}
+
+.product__button--edit:hover{
+    background-color: coral;
+    color: black
 }

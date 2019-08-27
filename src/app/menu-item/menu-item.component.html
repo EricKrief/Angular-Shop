@@ -1,1 +1,2 @@
-<li class="main__menu-item" (click)="itemClicked(itemTitle)">{{itemTitle}}</li>
+<li class="main__menu-item" [ngClass]="{'item__li--selected':selected}" (click)="itemClicked(itemTitle)">{{itemTitle}}
+</li>
