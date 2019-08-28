@@ -18,4 +18,8 @@ export class ContactComponent implements OnInit {
     console.log(form);
   }
 
+  logUserResponse(userRespone: string) {
+    console.log(userRespone);
+  }
+
 }

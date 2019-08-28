@@ -15,6 +15,7 @@
             <h2>Message</h2>
             <textarea class="text-area__message" ngModel name="message"></textarea>
         </div>
-        <input [disabled]="!form.valid" class="button--send" type="submit" value="Send" />
+        <input confirmation (userClickRespone)="logUserResponse($event)" [disabled]="!form.valid" class="button--send"
+            type="submit" value="Send" />
     </form>
 </div>
