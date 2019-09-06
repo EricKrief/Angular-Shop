@@ -32,6 +32,13 @@
             *ngIf="!addProductForm.get('category').valid && addProductForm.get('category').touched">Please enter
             product category</span>
         <div class="div--input-container">
+            <h2>Fun fact</h2>
+            <input type="text" class="form__input" formControlName="fact" />
+        </div>
+        <span class="span--invalid"
+            *ngIf="!addProductForm.get('fact').valid && addProductForm.get('fact').touched">Please enter
+            a fun fact on this product</span>
+        <div class="div--input-container">
             <h2>Description</h2>
             <textarea type="text" class="text-area--description" formControlName="description"></textarea>
         </div>

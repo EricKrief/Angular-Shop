@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
+import { PermissionService } from '../permission.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  @Input() title: string;
-  
+  title = 'Welcome to the shop!';
+  username: string;
 
-  constructor() { }
-  ngOnInit() { }
+
+  constructor(private permissionService: PermissionService) { }
+  ngOnInit() {
+    this.username = this.permissionService.loggedInUsername;
+    if (this.username !== undefined) {
+      this.title = `Welcome, ${this.username}!`;
+    }
+  }
 
 }

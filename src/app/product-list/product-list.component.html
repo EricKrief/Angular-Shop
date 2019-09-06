@@ -1,3 +1,4 @@
+<app-notifier *ngIf="notifier" [productName]="productName"></app-notifier>
 <div class="product-list__div--container">
     <ul class="product-list__ul">
         <ng-container *ngFor="let product of products">
@@ -6,7 +7,8 @@
                 </app-product>
                 <input type="button" value="Add to cart" [disabled]="loggedInUsername === undefined"
                     class="product__button--add" (click)="addProduct(product)" />
-                <input *ngIf="loggedInUsername === 'admin'" (click)="editClicked(product)" type="button" class="product__button--edit" value="edit" />
+                <input *ngIf="loggedInUsername === 'admin'" (click)="editClicked(product)" type="button"
+                    class="product__button--edit" value="edit" />
             </li>
         </ng-container>
     </ul>

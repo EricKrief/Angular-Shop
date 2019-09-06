@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-  title = "Contact Us!";
+  title = 'Contact Us!';
 
   constructor() { }
   ngOnInit() { }

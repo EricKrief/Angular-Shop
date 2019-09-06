@@ -1,8 +1,9 @@
-<li *ngIf="!shoppingCart" class="main__menu-item" [ngClass]="{'item__li--selected':selected}"
-    (click)="itemClicked(itemTitle)">
+<li *ngIf="!shoppingCart" class="main__menu-item" routerLinkActive="item__li--selected"
+    [routerLinkActiveOptions]="{exact:true}" (click)="itemClicked(itemTitle)">
     {{itemTitle | localize:language}}
 </li>
-<li *ngIf="shoppingCart" class="main__menu-item" [ngClass]="{'item__li--selected':selected}"
-    (click)="itemClicked(itemTitle)">
-    {{itemTitle}}
+<li *ngIf="shoppingCart" class="main__menu-item" routerLinkActive="item__li--selected"
+    [routerLinkActiveOptions]="{exact:true}" (click)="itemClicked(itemTitle)">
+    <ng-container *ngIf="language !== 'עברית'">{{'shopping cart' | localize:language}}({{numberOfItems}})</ng-container>
+    <ng-container *ngIf="language === 'עברית'">({{'shopping cart' | localize:language}}({{numberOfItems}}</ng-container>
 </li>

@@ -15,7 +15,7 @@ export class ContentProjectionComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     let social_links = this.mySocialLinks.toArray();
     for (let i = 0; i < social_links.length; i++) {
-      social_links[i].nativeElement.target = "_blank";
+      social_links[i].nativeElement.target = '_blank';
     }
   }
 

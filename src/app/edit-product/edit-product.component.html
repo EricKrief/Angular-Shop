@@ -35,9 +35,18 @@
             <textarea type="text" class="text-area--description" formControlName="description"
                 value="{{product.description}}"></textarea>
         </div>
+        <div class="div--input-container">
+            <h2>Fun fact</h2>
+            <textarea type="text" class="text-area--description" formControlName="fact"
+                value="{{product.fact}}"></textarea>
+        </div>
+        <span class="span--invalid"
+            *ngIf="!editProductForm.get('fact').valid && editProductForm.get('fact').dirty">Please enter
+            a fun fact about {{product.title}}</span>
         <input class="button--update" type="submit" value="update product" [disabled]="!editProductForm.get('image').valid || 
             !editProductForm.get('price').valid || 
             !editProductForm.get('category').valid || 
-            !editProductForm.get('title').valid" />
+            !editProductForm.get('title').valid || 
+            !editProductForm.get('fact').valid" />
     </form>
 </div>

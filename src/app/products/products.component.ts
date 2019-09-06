@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/model/product';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-products',
@@ -8,32 +9,18 @@ import { Product } from 'src/model/product';
 })
 export class ProductsComponent implements OnInit {
 
-  @Input() products: Product[];
-  @Output() showProductDetails = new EventEmitter<Product>();
-  @Output() addItem = new EventEmitter<Product>();
-  @Output() edit = new EventEmitter<Product>();
+  products: Product[];
   title = "Buy our products!";
   categorySelected: string;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
   ngOnInit() {
     this.categorySelected = "All";
+    this.products = this.dataService.getProducts();
   }
 
   changeProductDisplay(displayTitle: string) {
     this.categorySelected = displayTitle;
-  }
-
-  productClicked(product: Product) {
-    this.showProductDetails.emit(product);
-  }
-
-  addToCart(product: Product) {
-    this.addItem.emit(product);
-  }
-
-  editProduct(product: Product) {
-    this.edit.emit(product);
   }
 
 }

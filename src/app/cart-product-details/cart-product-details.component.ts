@@ -1,26 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/model/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-cart-product-details',
+  templateUrl: './cart-product-details.component.html',
+  styleUrls: ['./cart-product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class CartProductDetailsComponent implements OnInit {
 
-  @Input() product: Product;
-  @Output() goBack = new EventEmitter();
+  product: Product;
 
   constructor(private router: Router, private dataService: DataService, private route: ActivatedRoute) { }
   ngOnInit() {
-
     this.product = this.dataService.getProductByName(this.route.snapshot.params['name']);
   }
 
   backClicked() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/shopping-cart']);
   }
+
+
+
 
 }

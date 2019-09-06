@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CartService } from '../cart.service';
+import { PermissionService } from '../permission.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -8,13 +10,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class MenuItemComponent implements OnInit {
 
   @Input() itemTitle: string;
-  @Input() selected: boolean;
   @Input() language: string;
   @Input() shoppingCart: boolean;
   @Output() itemClick = new EventEmitter<string>();
+  numberOfItems: number;
 
-  constructor() { }
+  constructor(private cartService: CartService, private permissionService: PermissionService) { }
   ngOnInit() {
+    this.numberOfItems = this.cartService.getProductsCount(this.permissionService.loggedInUsername);
   }
 
   itemClicked(item: string) {

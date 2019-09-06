@@ -1,17 +1,7 @@
 <app-nav-bar (toggleMenu)="toggleMenu()"></app-nav-bar>
-<app-menu *ngIf="showMenu" (pageChanged)="changePage($event)" [loggedIn]="showCart"
-    [shoppingCartMenuItem]="shoppingCartMenuItemText" (languageChanged)="changeLanguage($event)"></app-menu>
+<app-menu *ngIf="showMenu" (onLogOut)="toggleMenu()" (mouseleave)="toggleMenu()"></app-menu>
 <app-header></app-header>
-<app-notifier @notifier *ngIf="notifier" [productName]="productName"></app-notifier>
-<app-home @state *ngIf="displayPage === 'home'" [title]="homeText"></app-home>
-<app-about @state *ngIf="displayPage === 'about'"></app-about>
-<app-products @state *ngIf="displayPage === 'products'" [products]="products"
-    (showProductDetails)="showProductDetails($event)" (addItem)="addItem($event)" (edit)="editProduct($event)"></app-products>
-<app-contact @state *ngIf="displayPage === 'contact'"></app-contact>
-<app-shopping-cart @state *ngIf="displayPage === 'shopping cart'" (removeItem)="removeProduct($event)"
-    (updateProductCount)="updateProductCount($event)"></app-shopping-cart>
-<app-product-details @state *ngIf="displayPage === 'details'" [product]="product" (goBack)="backClicked()">
-</app-product-details>
-<app-login @state *ngIf="displayPage === 'login'" (login)="login($event)"></app-login>
-<app-add-product @state *ngIf="displayPage === 'add product'" (productAdded)="updated()"></app-add-product>
-<app-edit-product @state *ngIf="displayPage === 'edit product'" [product]="product" (updated)="updated()"></app-edit-product>
+
+<div [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>

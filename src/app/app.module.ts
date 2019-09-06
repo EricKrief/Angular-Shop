@@ -24,6 +24,30 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { LocalizePipe } from './localize.pipe';
 import { ConfirmationDirective } from './confirmation.directive';
+import { Routes, RouterModule } from '@angular/router';
+import { CartProductDetailsComponent } from './cart-product-details/cart-product-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoggedInGuard } from './logged-in.guard';
+import { AdminGuard } from './admin.guard';
+import { CanDeactivateGuard } from './can-deactivate.guard';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent, data: { animation: '1' } },
+  { path: 'about', component: AboutComponent, data: { animation: '2' }  },
+  { path: 'add-product', component: AddProductComponent, canActivate: [AdminGuard], canDeactivate: [CanDeactivateGuard], data: { animation: 'one' }  },
+  { path: 'contact', component: ContactComponent, data: { animation: '3' } },
+  { path: 'edit-product', component: EditProductComponent, canActivate: [AdminGuard], data: { animation: '4' }  },
+  { path: 'login', component: LoginComponent, data: { animation: '5' } },
+  { path: 'product-details/:name', component: ProductDetailsComponent, data: { animation: '6' }  },
+  { path: 'products', component: ProductsComponent, data: { animation: '7' }  },
+  {
+    path: 'shopping-cart', component: ShoppingCartComponent,
+    children: [{ path: ':name', component: CartProductDetailsComponent }],
+    canActivate: [LoggedInGuard], data: { animation: '8' } 
+  },
+  { path: 'edit-product/:name', component: EditProductComponent, data: { animation: '9' }  },
+  { path: '**', component: PageNotFoundComponent, data: { animation: '10' }  }
+];
 
 @NgModule({
   declarations: [
@@ -47,13 +71,16 @@ import { ConfirmationDirective } from './confirmation.directive';
     AddProductComponent,
     EditProductComponent,
     LocalizePipe,
-    ConfirmationDirective
+    ConfirmationDirective,
+    CartProductDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,22 @@
 <div class="main__div">
     <ul class="ul--languages">
-        <li *ngFor="let language of languages" class="li--language" (click)="changeLanguage(language)"> 
+        <li *ngFor="let language of languages" class="li--language" (click)="changeLanguage(language)">
             {{language}}
         </li>
     </ul>
     <ul>
-        <ng-container *ngFor="let item of menuItems">
-            <app-menu-item [itemTitle]="item" [selected]="item === selectedMenuItem"
-                (itemClick)="onPageChanged($event)" [language]="currentLanguage"></app-menu-item>
-        </ng-container>
-        <app-menu-item [itemTitle]="logInOut" [selected]="selectedMenuItem === 'login' || selectedMenuItem === 'logout'"
-            (itemClick)="onPageChanged($event)" [language]="currentLanguage"></app-menu-item>
+        <app-menu-item [itemTitle]="'home'" [language]="currentLanguage" routerLink=""></app-menu-item>
+        <app-menu-item [itemTitle]="'about'" [language]="currentLanguage" routerLink="about"></app-menu-item>
+        <app-menu-item [itemTitle]="'products'" [language]="currentLanguage" routerLink="products"></app-menu-item>
+        <app-menu-item [itemTitle]="'contact'" [language]="currentLanguage" routerLink="contact"></app-menu-item>
+        <app-menu-item *ngIf="!loggedIn" [itemTitle]="'login'" [language]="currentLanguage" routerLink="login">
+        </app-menu-item>
+        <app-menu-item *ngIf="loggedIn" [itemTitle]="'logout'" (itemClick)="logout()" [language]="currentLanguage">
+        </app-menu-item>
+        <app-menu-item *ngIf="username === 'admin'" [itemTitle]="'add product'" [language]="currentLanguage"
+            routerLink="add-product"></app-menu-item>
         <app-menu-item *ngIf="loggedIn" [itemTitle]="shoppingCartMenuItem" [shoppingCart]="true"
-            [selected]="selectedMenuItem === 'shopping cart'" (itemClick)="onPageChanged($event)" [language]="currentLanguage"></app-menu-item>
+            routerLink="shopping-cart" [language]="currentLanguage"></app-menu-item>
     </ul>
     <app-content-projection>
         <ul class="footer__ul">

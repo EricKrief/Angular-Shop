@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Product } from 'src/model/product';
 import { PermissionService } from '../permission.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -12,27 +13,34 @@ export class ProductListComponent implements OnInit {
 
   @Input() products: Product[];
   @Input() categorySelected: string;
-  @Output() showProductDetails = new EventEmitter<Product>();
-  @Output() editProduct = new EventEmitter<Product>();
-  @Output() addToCart = new EventEmitter<Product>();
+  productName: string;
+  notifier = false;
   loggedInUsername: string;
 
-  constructor(private cartService: CartService, private permissionService: PermissionService) { }
+  constructor(private cartService: CartService, private permissionService: PermissionService, private router: Router) { }
   ngOnInit() {
     this.loggedInUsername = this.permissionService.loggedInUsername;
   }
 
   productClicked(product: Product) {
-    this.showProductDetails.emit(product);
+    this.router.navigate(['/product-details/' + product.title]);
+  }
+
+  showNotifier() {
+    this.notifier = true;
+    setTimeout(() => this.notifier = false, 4000);
   }
 
   addProduct(product: Product) {
+    if (this.cartService.doesExist(product, this.loggedInUsername)) {
+      this.productName = product.title;
+      this.showNotifier();
+    }
     this.cartService.addProduct(product, this.loggedInUsername);
-    this.addToCart.emit(product);
   }
 
   editClicked(product: Product) {
-    this.editProduct.emit(product);
+    this.router.navigate(['edit-product/'+product.title]);
   }
 
 }

@@ -24,6 +24,7 @@
     display: flex;
     justify-content: space-around;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .product__img{
@@ -75,3 +76,4 @@
 .cart__button--checkout:hover{
     background-color: crimson;
 }
+

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class LocalizationService {
 
-    languages: string[] = ["english", 'עברית', 'espanol'];
+    languages: string[] = ['english', 'עברית', 'espanol'];
     currentLanguage: string = 'english';
     allLanguages = {
         english: {
@@ -39,7 +39,6 @@ export class LocalizationService {
             'login': 'iniciar sesión',
             'logout': 'cerrar sesión',
             'shopping cart': 'carrito compras'
-
         }
     }
 

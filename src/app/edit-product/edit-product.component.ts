@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/model/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-product',
@@ -14,15 +15,17 @@ export class EditProductComponent implements OnInit {
   @Output() updated = new EventEmitter();
   editProductForm: FormGroup;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.product = this.dataService.getProductByName(this.route.snapshot.params['name']);
     this.editProductForm = new FormGroup({
       'title': new FormControl(this.product.title, Validators.required),
       'category': new FormControl(this.product.categoryName, Validators.required),
       'price': new FormControl(this.product.price.substring(0, this.product.price.length - 1), [Validators.required, Validators.min(0.1)]),
       'image': new FormControl(this.product.imgUrl, Validators.required),
-      'description': new FormControl(this.product.description)
+      'description': new FormControl(this.product.description),
+      'fact': new FormControl(this.product.fact, Validators.required)
     });
   }
 
@@ -46,7 +49,7 @@ export class EditProductComponent implements OnInit {
       this.product.description = this.editProductForm.value.description;
     }
     this.dataService.updateProduct(this.product, oldTitle);
-    this.updated.emit();
+    this.router.navigate(['/products']);
   }
 
 }

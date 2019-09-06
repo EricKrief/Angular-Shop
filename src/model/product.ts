@@ -7,4 +7,5 @@ export interface Product {
     imgUrl: string;
     quantity?: number;
     totalPrice?: string;
+    fact: string;
 }

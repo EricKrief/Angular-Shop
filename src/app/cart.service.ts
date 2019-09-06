@@ -3,7 +3,7 @@ import { Product } from 'src/model/product';
 
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 
 export class CartService {
@@ -21,7 +21,9 @@ export class CartService {
                 price: product.price,
                 imgUrl: product.imgUrl,
                 quantity: 1,
-                totalPrice: product.price
+                totalPrice: product.price,
+                fact: product.fact
+
             };
             this.allCarts[username].push(newProduct);
         }
@@ -50,7 +52,14 @@ export class CartService {
     }
 
     getProductsCount(username: string): number {
-        return this.allCarts[username].length;
+        if (!username) {
+            return 0;
+        }
+        let sum = 0;
+        for (let i = 0; i < this.allCarts[username].length; i++) {
+            sum += this.allCarts[username][i].quantity;
+        }
+        return sum;
     }
 
     doesExist(product: Product, username: string): boolean {
