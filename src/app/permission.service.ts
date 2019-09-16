@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/model/user';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -7,8 +8,14 @@ import { User } from 'src/model/user';
 export class PermissionService {
 
     loggedInUsername: string;
-    users: User[] = [{ username: 'user', password: 'user' }, { username: 'admin', password: 'admin' }];
+    users: User[];
 
+    constructor(private http: HttpClient) {
+       this.http.get('assets/users.json').toPromise().then((json: any) => {
+            this.users = json.users;
+        });
+
+    }
 
     validateUser(username: string, password: string): boolean {
         let validated = false;

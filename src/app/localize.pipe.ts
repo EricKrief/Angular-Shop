@@ -2,7 +2,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 import { LocalizationService } from './localization.service'
 
 @Pipe({
-    name: 'localize'
+    name: 'localize',
 })
 export class LocalizePipe implements PipeTransform {
 
@@ -10,6 +10,5 @@ export class LocalizePipe implements PipeTransform {
 
     transform(value: string, transformTo: string) {
         return this.localizationService.getTranslatedWord(value, transformTo);
-
     }
 }

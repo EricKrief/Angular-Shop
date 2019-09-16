@@ -1,25 +1,27 @@
 <div class="main__div">
-    <ul class="ul--languages">
-        <li *ngFor="let language of languages" class="li--language" (click)="changeLanguage(language)">
-            {{language}}
-        </li>
-    </ul>
-    <ul>
-        <app-menu-item [itemTitle]="'home'" [language]="currentLanguage" routerLink=""></app-menu-item>
-        <app-menu-item [itemTitle]="'about'" [language]="currentLanguage" routerLink="about"></app-menu-item>
-        <app-menu-item [itemTitle]="'products'" [language]="currentLanguage" routerLink="products"></app-menu-item>
-        <app-menu-item [itemTitle]="'contact'" [language]="currentLanguage" routerLink="contact"></app-menu-item>
-        <app-menu-item *ngIf="!loggedIn" [itemTitle]="'login'" [language]="currentLanguage" routerLink="login">
-        </app-menu-item>
-        <app-menu-item *ngIf="loggedIn" [itemTitle]="'logout'" (itemClick)="logout()" [language]="currentLanguage">
-        </app-menu-item>
-        <app-menu-item *ngIf="username === 'admin'" [itemTitle]="'add product'" [language]="currentLanguage"
-            routerLink="add-product"></app-menu-item>
-        <app-menu-item *ngIf="loggedIn" [itemTitle]="shoppingCartMenuItem" [shoppingCart]="true"
-            routerLink="shopping-cart" [language]="currentLanguage"></app-menu-item>
-    </ul>
+    <div>
+        <ul class="ul--languages">
+            <li *ngFor="let language of languages" class="li--language" (click)="changeLanguage(language)">
+                {{language}}
+            </li>
+        </ul>
+        <ul>
+            <app-menu-item [itemTitle]="'home'" [language]="currentLanguage" routerLink=""></app-menu-item>
+            <app-menu-item [itemTitle]="'about'" [language]="currentLanguage" routerLink="about"></app-menu-item>
+            <app-menu-item [itemTitle]="'products'" [language]="currentLanguage" routerLink="products"></app-menu-item>
+            <app-menu-item [itemTitle]="'contact'" [language]="currentLanguage" routerLink="contact"></app-menu-item>
+            <app-menu-item *ngIf="!loggedIn" [itemTitle]="'login'" [language]="currentLanguage" routerLink="login">
+            </app-menu-item>
+            <app-menu-item *ngIf="loggedIn" [itemTitle]="'logout'" (itemClick)="logout()" [language]="currentLanguage">
+            </app-menu-item>
+            <app-menu-item *ngIf="username === 'admin'" [itemTitle]="'add product'" [language]="currentLanguage"
+                routerLink="add-product"></app-menu-item>
+            <app-menu-item *ngIf="loggedIn" [itemTitle]="shoppingCartMenuItem" [shoppingCart]="true"
+                routerLink="shopping-cart" [language]="currentLanguage"></app-menu-item>
+        </ul>
+    </div>
     <app-content-projection>
-        <ul class="footer__ul">
+        <ul>
             <li *ngFor="let url of socialMediaUrls; let i=index" class="footer__li">
                 <a href={{myProfiles[i]}} #social_links>
                     <img class="footer__buttons" src={{url}} />

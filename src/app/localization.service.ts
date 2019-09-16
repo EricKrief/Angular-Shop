@@ -1,57 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Language } from 'src/model/language';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LocalizationService {
 
-    languages: string[] = ['english', 'עברית', 'espanol'];
-    currentLanguage: string = 'english';
-    allLanguages = {
-        english: {
-            'home': 'home',
-            'about': 'about',
-            'contact': 'contact',
-            'products': 'products',
-            'add product': 'add product',
-            'login': 'login',
-            'logout': 'logout',
-            'shopping cart': 'shopping cart'
-        },
+    languageTitles: string[] = [];
+    languages: Language[] = [];
+    currentLanguage: string;
 
-        עברית: {
-            'home': 'בית',
-            'about': 'אודות',
-            'contact': 'צור קשר',
-            'products': 'מוצרים',
-            'add product': 'הוסף מוצר',
-            'login': 'התחבר',
-            'logout': 'התנתק',
-            'shopping cart': 'עגלת מוצרים'
-        },
-
-        espanol: {
-            'home': 'inicio',
-            'about': 'acerca de',
-            'contact': 'contacto',
-            'products': 'productos',
-            'add product': 'Añadir Producto',
-            'login': 'iniciar sesión',
-            'logout': 'cerrar sesión',
-            'shopping cart': 'carrito compras'
-        }
+    constructor(private http: HttpClient) {
+        this.http.get('assets/languages.json').toPromise().then((json: any) => {
+            this.languages = json.languages;
+            this.currentLanguage = json.defaultLanguage;
+            this.languages.forEach(language => this.languageTitles.push(language.title));
+        });
     }
 
     getTranslatedWord(word: string, language: string) {
-        return this.allLanguages[language][word];
+        return this.languages.find(l => l.title === language).wordMapping[word];
     }
 
     changeLanguage(language: string) {
         this.currentLanguage = language;
     }
 
-    getLanguages() {
-        return this.languages;
+    getLanguageTitles() {
+        return this.languageTitles;
     }
 
 }

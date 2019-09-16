@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/model/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
@@ -11,8 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditProductComponent implements OnInit {
 
-  @Input() product: Product;
-  @Output() updated = new EventEmitter();
+  product: Product;
   editProductForm: FormGroup;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
@@ -30,24 +29,14 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
-    let oldTitle: string = null;
-    if (this.editProductForm.value.title !== null) {
-      oldTitle = this.product.title;
-      this.product.title = this.editProductForm.value.title;
-    }
-    if (this.editProductForm.value.category !== null) {
-      this.product.categoryName = this.editProductForm.value.category;
-      this.product.categoryId = this.dataService.getCategoryByName(this.product.categoryName).id;
-    }
-    if (this.editProductForm.value.price !== null) {
-      this.product.price = this.editProductForm.value.price + '$';
-    }
-    if (this.editProductForm.value.image !== null) {
-      this.product.imgUrl = this.editProductForm.value.image;
-    }
-    if (this.editProductForm.value.description !== null) {
-      this.product.description = this.editProductForm.value.description;
-    }
+    let oldTitle = this.product.title;
+    this.product.title = this.editProductForm.value.title;
+    this.product.categoryName = this.editProductForm.value.category;
+    this.product.categoryId = this.dataService.getCategoryByName(this.product.categoryName).id;
+    this.product.price = this.editProductForm.value.price + '$';
+    this.product.imgUrl = this.editProductForm.value.image;
+    this.product.description = this.editProductForm.value.description;
+    this.product.fact = this.editProductForm.value.fact;
     this.dataService.updateProduct(this.product, oldTitle);
     this.router.navigate(['/products']);
   }

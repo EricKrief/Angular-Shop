@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './router-transitions';
+import { DataService } from './data.service';
+import { LocalizationService } from './localization.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class AppComponent implements OnInit {
 
   showMenu = false;
 
-  constructor() { }
+  constructor(private dataService: DataService, private localization: LocalizationService) { }
 
   ngOnInit() { }
 

@@ -1,0 +1,44 @@
+{
+    "languages": [
+        {
+            "title": "english",
+            "wordMapping": {
+                "home": "home",
+                "about": "about",
+                "contact": "contact",
+                "products": "products",
+                "add product": "add product",
+                "login": "login",
+                "logout": "logout",
+                "shopping cart": "shopping cart"
+            }
+        },
+        {
+            "title": "עברית",
+            "wordMapping": {
+                "home": "בית",
+                "about": "אודות",
+                "contact": "צור קשר",
+                "products": "מוצרים",
+                "add product": "הוסף מוצר",
+                "login": "התחבר",
+                "logout": "התנתק",
+                "shopping cart": "עגלת מוצרים"
+            }
+        },
+        {
+            "title": "espanol",
+            "wordMapping": {
+                "home": "inicio",
+                "about": "acerca de",
+                "contact": "contacto",
+                "products": "productos",
+                "add product": "Añadir Producto",
+                "login": "iniciar sesión",
+                "logout": "cerrar sesión",
+                "shopping cart": "carrito compras"
+            }
+        }
+    ],
+    "defaultLanguage": "english"
+}

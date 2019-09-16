@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.username = this.permissionService.loggedInUsername;
     this.currentLanguage = this.localizationService.currentLanguage;
-    this.languages = this.localizationService.getLanguages();
+    this.languages = this.localizationService.getLanguageTitles();
     this.socialMediaUrls = this.dataService.getSocialMediaUrls();
     this.myProfiles = this.dataService.getProfileUrls();
     this.loggedIn = this.permissionService.loggedInUsername !== undefined;

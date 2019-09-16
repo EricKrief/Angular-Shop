@@ -1,0 +1,93 @@
+{
+    "categories": [
+        {
+            "title": "Fruit"
+        },
+        {
+            "title": "Vegetable"
+        }
+    ],
+    "productDisplayOptions": [
+        {
+            "title": "All",
+            "selected": true
+        },
+        {
+            "title": "Fruit",
+            "selected": false
+        },
+        {
+            "title": "Vegetable",
+            "selected": false
+        }
+    ],
+    "products": [
+        {
+            "title": "Lettuce",
+            "categoryName": "Vegetable",
+            "price": "2.89$",
+            "description": "Key part of any salad",
+            "imgUrl": "https://www.pngarts.com/files/1/Romaine-Lettuce-PNG-Image-With-Transparent-Background.png",
+            "fact": "It is without doubt the world’s most popular salad plant"
+        },
+        {
+            "title": "Orange",
+            "categoryName": "Fruit",
+            "price": "1.49$",
+            "description": "Fresh orange picked today!",
+            "imgUrl": "https://www.pngarts.com/files/3/Mandarin-Orange-PNG-Transparent-Image.png",
+            "fact": "There are over 600 varieties of oranges worldwide"
+        },
+        {
+            "title": "Banana",
+            "categoryName": "Fruit",
+            "price": "1.99$",
+            "description": "A great snack for the road",
+            "imgUrl": "https://www.pngarts.com/files/3/Banana-Download-PNG-Image.png",
+            "fact": "The banana is actually classified as a berry"
+        },
+        {
+            "title": "Onion",
+            "categoryName": "Vegetable",
+            "price": "0.99$",
+            "description": "Wonderful and great for cooking",
+            "imgUrl": "https://www.pngarts.com/files/3/Onion-Transparent-Image.png",
+            "fact": "One average sized onion has 30 calories"
+        },
+        {
+            "title": "Apple",
+            "categoryName": "Fruit",
+            "price": "1.99$",
+            "description": "A fresh sweet red apple",
+            "imgUrl": "https://ya-webdesign.com/transparent250_/apple-fruit-png.png",
+            "fact": "Apples contain no fat, sodium or cholesterol and are a good source of fiber"
+        },
+        {
+            "title": "Potato",
+            "categoryName": "Vegetable",
+            "price": "1.29$",
+            "description": "Great when cooked in camp fire",
+            "imgUrl": "https://www.pngarts.com/files/3/Potato-PNG-Photo.png",
+            "fact": "Potatoes are 80% water."
+        },
+        {
+            "title": "Pepper",
+            "categoryName": "Vegetable",
+            "price": "1.49$",
+            "description": "Amazing both raw or cooked",
+            "imgUrl": "https://ya-webdesign.com/transparent250_/reb-bell-pepper-png-1.png",
+            "fact": "Bell peppers are fruits, however, they are considered vegetables in culinary contexts"
+        }
+    ],
+    "socialMediaUrls": [
+        "https://qvcc.edu/wp-content/uploads/2019/06/FB.png",
+        "http://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png",
+        "https://s18955.pcdn.co/wp-content/uploads/2019/06/gmail-copy.png"
+    ],
+    "myProfiles": [
+        "https://www.facebook.com/eric.krief.7",
+        "https://github.com/EricKrief",
+        "mailto:erickrief1@gmail.com"
+    ]
+   
+}

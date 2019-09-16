@@ -1,6 +1,6 @@
 <div class="container__div">
     <div class="product-list__div">
-        <h1 *ngIf="products.length === 0">{{emptyCartText}}</h1>
+        <h1 *ngIf="products.length === 0">Your cart is empty!</h1>
         <ul>
             <li *ngFor="let product of products" class="product__li" routerLink="{{product.title}}">
                 <img src={{product.imgUrl}} class="product__img" />
