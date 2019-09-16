@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from 'src/model/product';
 import { CartService } from '../cart.service';
 import { PermissionService } from '../permission.service';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   products: Product[];
   totalPrice: number;
@@ -24,6 +24,10 @@ export class ShoppingCartComponent implements OnInit {
     this.subsciption = this.cartService.productsInCart.subscribe(
       data => { this.products = data }
     )
+  }
+
+  ngOnDestroy() {
+    this.subsciption.unsubscribe();
   }
 
   changeQuantity(event, product: Product) {
