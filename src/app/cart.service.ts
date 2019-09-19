@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/model/product';
 import { Cart } from 'src/model/cart';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { PermissionService } from './permission.service';
+import { first, take, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -16,13 +17,17 @@ export class CartService {
     public readonly numberOfItems: Observable<number> = this._numberOfItems.asObservable();
     private _productsInCart = new BehaviorSubject<Product[]>([]);
     public readonly productsInCart: Observable<Product[]> = this._productsInCart.asObservable();
+    subscription: Subscription;
 
-    constructor(private http: HttpClient) {
-        this.http.get('assets/users.json').toPromise().then((json: any) => {
-            json.users.forEach(user => {
-                this.carts.push({ username: user.username, products: [] })
-            });
-        })
+    constructor(private permissionService: PermissionService) {
+        this.permissionService.getUsersObs().pipe(
+            take(1)).subscribe(
+                (users: any) => {
+                    users.forEach(
+                        user => this.carts.push(
+                            { username: user.username, products: [] }
+                        ));
+                });
     }
 
     updateNumberOfItems(username: string) {
