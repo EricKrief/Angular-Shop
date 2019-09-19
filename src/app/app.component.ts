@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './router-transitions';
-import { DataService } from './data.service';
-import { LocalizationService } from './localization.service';
+import { slideInAnimation } from './core/utils/router-transitions';
+import { DataService } from './core/services/data.service';
+import { LocalizationService } from './core/services/localization.service';
 
 
 @Component({
