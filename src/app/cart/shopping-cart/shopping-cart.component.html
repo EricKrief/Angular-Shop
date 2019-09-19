@@ -1,0 +1,23 @@
+<div class="container__div">
+    <div class="product-list__div">
+        <h1 *ngIf="products.length === 0">Your cart is empty!</h1>
+        <ul>
+            <li *ngFor="let product of products" class="product__li" routerLink="{{product.title}}">
+                <img src={{product.imgUrl}} class="product__img" />
+                <ul class="products__ul">
+                    <li>Name: {{product.title}}</li>
+                    <li>Description: {{product.description}}</li>
+                    <li>Price: {{product.price}}</li>
+                    <li>Category id: {{product.categoryId}}</li>
+                    <li>Category name: {{product.categoryName}}</li>
+                    <li>Quantity: <input (change)="changeQuantity($event, product)" (click)="quantityClicked($event)" type="number" class="input--quantity" value="{{product.quantity}}" min="1" /></li>
+                    <li class="product__li--price">Total: {{product.totalPrice}}</li>
+                    <input type="button" value="Remove" (click)="removeProduct(product)" class="product__button--remove-item"/>
+                </ul>
+            </li>
+            <li class="product__li--total-price"><h1 *ngIf="products.length !== 0">Total cost: {{totalPrice}}$</h1></li>
+            <li class="product__li--total-price"><input *ngIf="products.length !== 0" type="button" class="cart__button--checkout" value="Checkout" /></li>
+        </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>

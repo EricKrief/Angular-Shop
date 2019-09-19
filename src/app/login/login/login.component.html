@@ -1,0 +1,17 @@
+<div class="main__div--container">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="main__form">
+        <div class="div--input-container">
+            <h2>Username</h2>
+            <input type="text" required class="form__input" ngModel name="username" #username="ngModel" />
+        </div>
+        <span class="span--invalid" *ngIf="!username.valid && username.touched">Please enter a username</span>
+        <div class="div--input-container">
+            <h2>Password</h2>
+            <input type="password" required class="form__input" ngModel name="password" #password="ngModel" />
+        </div>
+        <span class="span--invalid" *ngIf="!password.valid && password.touched">Please enter password</span>
+        <span class="span--invalid" *ngIf="incorrectLogin">Incorrect username or password</span>
+        <input [disabled]="!username.valid || !password.valid" class="button--login" type="submit" value="Login" />
+    </form>
+</div>
+<router-outlet></router-outlet>
